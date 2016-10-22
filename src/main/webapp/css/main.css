@@ -1,0 +1,46 @@
+/*初始化*/
+*{webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box; border:0; padding:0;font-family:"微软雅黑"; }
+body{margin:0; font-family:Arial,'microsoft yahei',sans-serif; font-family:Arial, "微软雅黑";font-size:14px;  }
+li{ list-style:none;}
+h1,h2,h3,p,dl,dt,dd,form,input,select {margin:0;padding:0;}
+th,td{padding:0;}
+ul,ol{margin:0;padding:0;list-style-type:none;}
+img {border:none;}
+a {text-decoration:none;color:black;}
+var,em {font-style:normal;}
+table{border-collapse:collapse;}
+.left{ float:left}
+.right{ float:right;}
+input{outline:none; line-height:28px;}
+button{outline:none; cursor:pointer;}
+html,body {height: 100%;}
+
+.login{ width:960px; height:420px; position:fixed; left:50%; top:50%; margin-top:-210px; margin-left:-480px; border:6px solid #e8e8e8; background:#fff; float:left;}
+.login_left{ width:500px; float:left;}
+.login_right{ width:448px; float:right;}
+.login_title{ width:100%; float:left;}
+.login_title ul li{ width:224px; float:left; height:43px; font-size:16px;}
+.login_title ul li a{ width:100%; float:left; height:43px; background:#e8e8e8; text-align:center; line-height:41px;}
+.login_title ul li.current a{ background:#fff;}
+.login_form{ width:100%; float:left;}
+.login_form ul{ width:100%; float:left; padding-left:60px; padding-top:45px;}
+.login_form ul span{ width:100%; float:left; height:35px; line-height:35px; color:#c00;}
+.login_form ul li{ width:100%; float:left; height:35px; margin-top:10px;}
+.login_form ul li input{ width:305px; height:35px; border:1px solid #ccc; font-size:14px; color:#666; line-height:33px; padding:0 5px;}
+.login_form ul li input:hover{border:1px solid #32a3e4;}
+.login_form ul li .name{ background:url(../images/username.png) no-repeat 7px 7px; padding-left:30px;}
+.login_form ul li .password{ background:url(../images/password.png) no-repeat 7px 7px; padding-left:30px;}
+.login_form ul li .bt_login{ width:305px; float:left; height:36px; color:#fff; background:#0e79dc; text-align:center; font-size:18px;}
+.login_form ul li .bt_login:hover{background:#2e94f3;}
+.login_form ul p{ width:100%; float:left; text-align:right; margin-top:15px; padding-right:83px;}
+.login_form ul p a{ color:#0055b5; margin-left:15px;}
+.login_form ul p a:hover{ text-decoration:underline;}
+
+.caozuo{ width:100%; float:left;}
+.caozuo dl{ width:214px; height:138px; float:left; background: url(../images/cz_bg.png) no-repeat right bottom #ebf5ff; text-align:center; border:1px solid #d0dbe4; margin-left:75px; margin-top:40px; cursor:pointer; position:relative;}
+.caozuo dl:hover{border:1px solid #0e79dc;}
+.caozuo dl p{ display:none;}
+.caozuo dl dt{ width:100%; float:left; height:52px; background:#96bee3; line-height:52px; font-size:24px; color:#fff;}
+.caozuo dl dd{ width:100%; float:left; margin-top:35px; color:#4781b6; font-size:24px;}
+.caozuo dl.gou{border:1px solid #0e79dc;}
+.caozuo dl.gou p{ position:absolute; width:28px; height:28px; left:10px; bottom:10px; display:block;}

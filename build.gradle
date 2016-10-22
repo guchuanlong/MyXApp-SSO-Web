@@ -1,0 +1,98 @@
+apply plugin: 'war'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src/main/java'
+		}
+		resources {
+			srcDir 'src/main/resources'
+		}
+	}
+}
+sourceCompatibility = 1.7
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+ext {
+    profile=project.hasProperty('profile')? (project['profile']==""?"aic-dev":project['profile']) : "aic-dev"
+}
+processResources {
+    from('profile/'+profile) {
+        include '**/*'
+    }
+}
+repositories {
+	//mavenLocal()
+	//mavenCentral()
+	maven { url "http://localhost:8081/nexus/content/groups/public/" }
+}
+ext {
+	ipaasVersion="1.0-SNAPSHOT"
+	versionSuffix="0.1.ibss-SNAPSHOT"
+}
+configurations.all { 
+	    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+	    resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+ 	}
+
+	
+
+dependencies {
+	compile fileTree(dir: "lib", include: '*.jar')
+	//spring
+	//relevant for cas
+//	compile 'org.jasig.cas:cas-server-core:4.0.1'
+//	//dependencies for cas
+//	compile 'com.github.inspektr:inspektr-support-spring:1.1.GA'
+//	compile 'com.github.inspektr:inspektr-error:1.1.GA'
+//	compile 'com.github.inspektr:inspektr-common:1.1.GA'
+//	compile 'com.github.inspektr:inspektr-audit:1.1.GA'
+	
+	//servlet
+	compile "javax.servlet:javax.servlet-api:3.1.0"
+	compile "javax.servlet.jsp:javax.servlet.jsp-api:2.3.1"
+	
+	//json
+	compile 'org.json:json:20140107'
+	//md5
+	compile 'commons-codec:commons-codec:1.5'
+
+	
+	compile ('com.myunihome.myxapp:myxapp-sdk:1.0-SNAPSHOT'){
+		exclude group: 'org.springframework'
+		exclude group: 'org.quartz-scheduler'
+	}
+	
+	compile 'org.javassist:javassist:3.19.0-GA'
+	
+	
+	//dubbo接口
+	compile 'com.myunihome.myxapp.sso:stafflogin:1.0-SNAPSHOT'
+	
+	//dubbo接口 公共管理租户接口
+	compile 'com.myunihome.myxapp.commons:tenant:1.0-SNAPSHOT'
+	
+	compile 'com.myunihome.myxapp.xss:xss-filter:1.0-SNAPSHOT'
+	
+	testCompile(
+		"org.springframework:spring-test:3.2.13.RELEASE",
+		"junit:junit:4.11"
+	)
+}
+
+eclipse {
+	wtp {
+	  facet {
+		facet name: 'java', version: '1.7'
+		facet name: 'jst.web', version: '3.0'
+		facet name: 'wst.jsdt.web', version: '1.0'
+		  }
+	  }
+  }
+
+war{
+	baseName  "mysso"
+}
